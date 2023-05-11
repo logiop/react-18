@@ -1,32 +1,22 @@
 import { React } from "react";
 import ReactDOM from "react-dom/client";
-import './index.css'
 
-const Image = () => <img src="./img/book-NH.jpeg" alt="Think and Grow Rich!"/>
-const Title = () => <h2>Think and Grow Rich!</h2>;
-const Author = () => <h4 style={{color: '#617d98', fontSize: '0.75rem', marginTop: '0.5rem'}}>Napoleon Hill</h4>;
+import "./index.css";
+import { books } from "./books.js";
+import Book from "./Book.js";
 
-const Book = () => {
+function BookList() {
   return (
-    <article className="book">
-      <Image />
-      <Title />
-      <Author />
-    </article>
+    <div>
+      <h1 className="title">a mazon best server</h1>
+      <section className="booklist">
+        {books.map((book, index) => {
+          return <Book {...book} key={book.id} number={index} />;
+        })}
+      </section>
+    </div>
   );
-};
-
-const BookList = () => {
-  return (
-    <section className="booklist">
-      <Book />
-      <Book />
-      <Book />
-      <Book />
-    </section>
-  );
-};
-
+}
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
